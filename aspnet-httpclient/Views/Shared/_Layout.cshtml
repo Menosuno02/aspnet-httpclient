@@ -1,0 +1,44 @@
+﻿@{
+    string baseUri = Context.Request.Scheme + "://" + Context.Request.Host;
+}
+
+<!doctype html>
+<html data-theme="light">
+<head>
+    <title>Peticiones con HttpClient</title>
+    <link rel="icon" type="image/x-icon" href="~/images/general/favicon.ico">
+    <link rel="stylesheet" href="~/css/output.css" />
+    <link href="~/css/daisy.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        @@font-face {
+            font-family: UberMove;
+            src: url("@baseUri/fonts/UberMoveMedium.otf") format('opentype');
+        }
+
+        * {
+            font-family: UberMove !important;
+        }
+    </style>
+    @RenderSection("styles", false)
+</head>
+
+<body>
+    <div class="navbar bg-primary text-primary-content lg:px-12">
+        <div class="navbar-start">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-ghost">
+                <span class="text-xl">Tabe</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container mx-auto max-w-full">
+        @RenderBody()
+    </div>
+
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/flowbite.js"></script>
+    <script src="~/js/tailwind.js"></script>
+    @await RenderSectionAsync("scripts", false)
+</body>
+
+</html>
